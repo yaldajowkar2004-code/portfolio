@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Theme tokens — opacity-friendly colors stored as RGB channels.
+   --------------------------------------------------------------------------- */
+:root {
+  --accent: 139 92 246;     /* #8b5cf6 */
+  --accent-2: 168 85 247;   /* #a855f7 */
+}
+
+html.dark {
+  --base: 5 5 11;           /* near-black */
+  --base-2: 12 11 24;
+  --ink: 244 244 250;
+  --muted: 155 154 176;
+  --card: rgba(20, 18, 36, 0.55);
+  --card-solid: #100e1c;
+  --line: rgba(255, 255, 255, 0.08);
+  --hairline: rgba(255, 255, 255, 0.14);
+}
+
+html.light {
+  --base: 244 243 252;
+  --base-2: 233 231 247;
+  --ink: 24 20 40;
+  --muted: 92 86 120;
+  --card: rgba(255, 255, 255, 0.7);
+  --card-solid: #ffffff;
+  --line: rgba(24, 20, 60, 0.1);
+  --hairline: rgba(24, 20, 60, 0.16);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+@layer base {
+  * {
+    @apply border-line;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    margin: 0;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  section {
+    scroll-margin-top: 92px;
+  }
+
+  ::selection {
+    background: rgba(139, 92, 246, 0.4);
+    color: #fff;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Reusable components
+   --------------------------------------------------------------------------- */
+@layer components {
+  /* glass surface with a faint top highlight for premium depth */
+  .glass {
+    @apply relative border border-line bg-card backdrop-blur-xl;
+    box-shadow: 0 20px 60px -28px rgba(0, 0, 0, 0.7),
+      inset 0 1px 0 0 var(--hairline);
+  }
+
+  .gradient-text {
+    background: linear-gradient(118deg, rgb(var(--accent-2)), rgb(var(--accent)) 55%, #e9d5ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-xl
+           px-5 py-3 text-sm font-medium transition-[background,box-shadow,border-color,color]
+           duration-300;
+  }
+
+  .btn-primary {
+    background: linear-gradient(118deg, rgb(var(--accent-2)), rgb(var(--accent)));
+    @apply text-white;
+    box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.6),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.28);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 16px 44px -8px rgba(168, 85, 247, 0.8),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.35);
+  }
+
+  .btn-ghost {
+    @apply glass text-ink;
+  }
+  .btn-ghost:hover {
+    @apply border-accent/60;
+  }
+
+  .social-btn {
+    @apply grid h-11 w-11 place-items-center rounded-full border border-line
+           bg-card text-muted backdrop-blur-xl transition-[color,border-color,box-shadow] duration-300;
+  }
+  .social-btn:hover {
+    @apply border-accent/60 text-ink;
+    box-shadow: 0 0 24px -6px rgba(139, 92, 246, 0.5);
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-canvas-2/70 px-4 py-3 text-sm
+           text-ink outline-none transition-[border-color,box-shadow] duration-300
+           placeholder:text-muted/70;
+  }
+  .field:focus {
+    @apply border-accent/70;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+  }
+
+  /* gradient hairline border used on premium cards */
+  .ring-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(140deg, rgba(168, 85, 247, 0.55), transparent 40%, transparent 65%, rgba(139, 92, 246, 0.35));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.35);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.6); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

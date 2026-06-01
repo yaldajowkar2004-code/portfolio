@@ -1,0 +1,22 @@
+import { motion, useReducedMotion } from 'framer-motion'
+
+/**
+ * Fade + rise reveal triggered when the element scrolls into view.
+ * Respects prefers-reduced-motion.
+ */
+export default function Reveal({ children, delay = 0, y = 28, className = '', ...rest }) {
+  const reduce = useReducedMotion()
+
+  return (
+    <motion.div
+      className={className}
+      initial={reduce ? false : { opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      {...rest}
+    >
+      {children}
+    </motion.div>
+  )
+}
