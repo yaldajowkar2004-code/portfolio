@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react'
 
 export const translations = {
   en: {
-    nav: { home: 'Home', about: 'About', skills: 'Skills', work: 'Work', education: 'Education', learning: 'Learning', contact: 'Contact' },
+    nav: { home: 'Home', about: 'About', skills: 'Skills', work: 'My Work', education: 'Education', learning: 'Learning', contact: 'Contact' },
     hero: {
       greeting: "Hi, I'm",
       role: 'Engineering Science Student',
@@ -10,7 +10,7 @@ export const translations = {
       roleAccent: 'Web Developer',
       description:
         'I design and build modern websites, using innovative tools to create smarter solutions for businesses.',
-      aboutBtn: 'About Me',
+      aboutBtn: 'My Work',
       contactBtn: 'Contact Me',
       locationLabel: 'Location',
       locationValue: 'Rome, Italy',
@@ -72,22 +72,19 @@ export const translations = {
     learning: {
       lead: "What I'm", accent: 'Learning',
       items: [
-        { title: 'Web Development', text: 'Learning to build responsive and modern websites using HTML, CSS, and JavaScript.' },
-        { title: 'Python Programming', text: 'Improving Python skills by solving problems and building small projects.' },
-        { title: 'UI/UX Design', text: 'Learning the basics of UI/UX to create clean and user-friendly interfaces.' },
         { title: 'AI Tools', text: 'Exploring AI tools to boost creativity and productivity in development.' },
         { title: 'Problem Solving', text: 'Strengthening logical thinking and problem-solving through practice and challenges.' },
-        { title: 'Engineering Studies', text: 'Continuing engineering studies to build a strong technical foundation.' },
+        { title: 'CRM System', text: 'Learning customer relationship management systems and business workflow optimization.' },
       ],
     },
     contact: {
       lead: 'Contact', accent: 'Me', glue: false,
-      intro: "I'm available for freelance work, internships, and collaborations. Feel free to reach out!",
+      intro: 'Available for internships and collaborations.',
       emailLabel: 'Email',
       connect: 'Connect With Me',
-      formTitle: 'Send Me a Message',
+      formTitle: "Let's Connect",
       nameLabel: 'Your Name', emailFieldLabel: 'Your Email', subjectLabel: 'Subject', messageLabel: 'Message',
-      send: 'Send Message',
+      send: 'Submit',
       success: 'Thanks! Your message has been recorded.',
       errName: 'Please enter your name.',
       errEmail: 'Please enter your email.',
@@ -103,7 +100,7 @@ export const translations = {
   },
 
   it: {
-    nav: { home: 'Home', about: 'Chi sono', skills: 'Competenze', work: 'Lavori', education: 'Istruzione', learning: 'Apprendimento', contact: 'Contatti' },
+    nav: { home: 'Home', about: 'Chi sono', skills: 'Competenze', work: 'I miei lavori', education: 'Istruzione', learning: 'Apprendimento', contact: 'Contatti' },
     hero: {
       greeting: 'Ciao, sono',
       role: 'Studentessa di Ingegneria',
@@ -111,7 +108,7 @@ export const translations = {
       roleAccent: 'Web Developer',
       description:
         'Progetto e sviluppo siti web moderni, utilizzando strumenti innovativi per creare soluzioni più intelligenti per le aziende.',
-      aboutBtn: 'Chi sono',
+      aboutBtn: 'I miei lavori',
       contactBtn: 'Contattami',
       locationLabel: 'Località',
       locationValue: 'Roma, Italia',
@@ -173,22 +170,19 @@ export const translations = {
     learning: {
       lead: 'Cosa sto', accent: 'Imparando',
       items: [
-        { title: 'Sviluppo Web', text: 'Sto imparando a creare siti web moderni e responsivi con HTML, CSS e JavaScript.' },
-        { title: 'Programmazione Python', text: 'Miglioro le mie competenze in Python risolvendo problemi e creando piccoli progetti.' },
-        { title: 'UI/UX Design', text: "Imparo le basi dell'UI/UX per creare interfacce pulite e intuitive." },
         { title: 'Strumenti AI', text: 'Esploro strumenti di AI per aumentare creatività e produttività nello sviluppo.' },
         { title: 'Problem Solving', text: 'Rafforzo il pensiero logico e il problem solving con pratica e sfide.' },
-        { title: 'Studi di Ingegneria', text: 'Continuo gli studi di ingegneria per costruire solide basi tecniche.' },
+        { title: 'Sistemi CRM', text: 'Apprendo i sistemi di gestione delle relazioni con i clienti e l\'ottimizzazione dei flussi di lavoro aziendali.' },
       ],
     },
     contact: {
       lead: 'Contatta', accent: 'mi', glue: true,
-      intro: 'Sono disponibile per lavori freelance, tirocini e collaborazioni. Non esitare a contattarmi!',
+      intro: 'Disponibile per tirocini e collaborazioni.',
       emailLabel: 'Email',
       connect: 'Connettiti con me',
-      formTitle: 'Inviami un messaggio',
+      formTitle: 'Connettiamoci',
       nameLabel: 'Il tuo nome', emailFieldLabel: 'La tua email', subjectLabel: 'Oggetto', messageLabel: 'Messaggio',
-      send: 'Invia messaggio',
+      send: 'Invia',
       success: 'Grazie! Il tuo messaggio è stato registrato.',
       errName: 'Inserisci il tuo nome.',
       errEmail: 'Inserisci la tua email.',

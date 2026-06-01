@@ -10,7 +10,7 @@ const SOCIALS = [
   { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com' },
   { icon: Mail, label: 'Email', href: `mailto:${EMAIL}` },
 ]
-const EMPTY = { name: '', email: '', subject: '', message: '' }
+const EMPTY = { email: '', message: '' }
 
 export default function Contact() {
   const { t } = useLang()
@@ -28,10 +28,8 @@ export default function Contact() {
 
   const validate = () => {
     const next = {}
-    if (!form.name.trim()) next.name = c.errName
     if (!form.email.trim()) next.email = c.errEmail
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = c.errEmailValid
-    if (!form.subject.trim()) next.subject = c.errSubject
     if (!form.message.trim()) next.message = c.errMessage
     return next
   }
@@ -44,12 +42,6 @@ export default function Contact() {
       setForm(EMPTY)
     }
   }
-
-  const fields = [
-    { key: 'name', label: c.nameLabel, type: 'text' },
-    { key: 'email', label: c.emailFieldLabel, type: 'email' },
-    { key: 'subject', label: c.subjectLabel, type: 'text' },
-  ]
 
   return (
     <section id="contact" className="relative py-20 md:py-28">
@@ -80,8 +72,8 @@ export default function Contact() {
               </div>
             </motion.a>
 
-            <p className="mt-8 text-sm font-medium text-muted">{c.connect}</p>
-            <div className="mt-3 flex gap-3">
+            {/* social icons directly under the email address */}
+            <div className="mt-4 flex gap-3">
               {SOCIALS.map(({ icon: Icon, label, href }) => (
                 <motion.a
                   key={label}
@@ -106,25 +98,23 @@ export default function Contact() {
             <h3 className="font-display text-xl font-semibold">{c.formTitle}</h3>
 
             <div className="mt-6 space-y-4">
-              {fields.map(({ key, label, type }) => (
-                <div key={key} className="sm:grid sm:grid-cols-[120px_1fr] sm:items-center sm:gap-4">
-                  <label htmlFor={key} className="mb-1 block text-sm text-muted sm:mb-0">
-                    {label}
-                  </label>
-                  <div>
-                    <input
-                      id={key}
-                      type={type}
-                      value={form[key]}
-                      onChange={update(key)}
-                      placeholder={label}
-                      className="field"
-                      aria-invalid={!!errors[key]}
-                    />
-                    {errors[key] && <p className="mt-1 text-xs text-red-400">{errors[key]}</p>}
-                  </div>
+              <div className="sm:grid sm:grid-cols-[120px_1fr] sm:items-center sm:gap-4">
+                <label htmlFor="email" className="mb-1 block text-sm text-muted sm:mb-0">
+                  {c.emailFieldLabel}
+                </label>
+                <div>
+                  <input
+                    id="email"
+                    type="email"
+                    value={form.email}
+                    onChange={update('email')}
+                    placeholder={c.emailFieldLabel}
+                    className="field"
+                    aria-invalid={!!errors.email}
+                  />
+                  {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
                 </div>
-              ))}
+              </div>
 
               <div className="sm:grid sm:grid-cols-[120px_1fr] sm:gap-4">
                 <label htmlFor="message" className="mb-1 block text-sm text-muted sm:mb-0 sm:pt-3">

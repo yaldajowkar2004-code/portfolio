@@ -1,4 +1,4 @@
-import { Cake, BookOpen, MapPin, Target } from 'lucide-react'
+import { Cake, BookOpen, MapPin } from 'lucide-react'
 import Reveal from './Reveal'
 import TiltCard from './TiltCard'
 import { useLang } from '../i18n.jsx'
@@ -10,7 +10,6 @@ export default function About() {
     { icon: Cake, label: a.birthdayLabel, value: a.birthdayValue },
     { icon: BookOpen, label: a.studyLabel, value: a.studyValue },
     { icon: MapPin, label: a.locationLabel, value: a.locationValue },
-    { icon: Target, label: a.focusLabel, value: a.focusValue },
   ]
 
   return (
@@ -29,15 +28,17 @@ export default function About() {
           </div>
         </Reveal>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid gap-3 sm:grid-cols-3">
           {INFO.map(({ icon: Icon, label, value }, i) => (
             <Reveal key={label} delay={0.12 + i * 0.08}>
-              <TiltCard className="h-full rounded-2xl glass p-5 transition-[border-color,box-shadow] duration-300 hover:border-accent/40 hover:shadow-glow-sm">
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent/15 text-accent" style={{ transform: 'translateZ(30px)' }}>
-                  <Icon size={18} />
+              <TiltCard className="flex h-full items-center gap-3 rounded-xl glass p-3.5 transition-[border-color,box-shadow] duration-300 hover:border-accent/40 hover:shadow-glow-sm">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent/15 text-accent" style={{ transform: 'translateZ(24px)' }}>
+                  <Icon size={16} />
                 </span>
-                <p className="mt-4 text-xs text-muted" style={{ transform: 'translateZ(18px)' }}>{label}</p>
-                <p className="mt-1 text-sm font-semibold" style={{ transform: 'translateZ(24px)' }}>{value}</p>
+                <div className="min-w-0" style={{ transform: 'translateZ(16px)' }}>
+                  <p className="text-[11px] text-muted">{label}</p>
+                  <p className="text-sm font-semibold leading-tight">{value}</p>
+                </div>
               </TiltCard>
             </Reveal>
           ))}

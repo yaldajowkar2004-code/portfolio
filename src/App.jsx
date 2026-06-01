@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import CursorGlow from './components/CursorGlow'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './components/Home'
 import About from './components/About'
 import Skills from './components/Skills'
@@ -55,16 +56,17 @@ export default function App() {
       />
 
       <CursorGlow />
+      <ScrollToTop />
 
       <Navbar theme={theme} toggleTheme={toggleTheme} />
 
       <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }} className="relative z-10">
         <Home />
-        <About />
         <Skills />
         <Work />
         <Education />
         <Learning />
+        <About />
         <Contact />
       </motion.main>
 

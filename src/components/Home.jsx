@@ -76,28 +76,9 @@ export default function Home() {
 
           <motion.h1
             variants={item}
-            className="relative mt-1 font-display text-6xl font-extrabold leading-none tracking-tight sm:text-7xl"
+            className="mt-1 font-display text-6xl font-extrabold leading-none tracking-tight text-ink sm:text-7xl"
           >
-            <span className="relative inline-block">
-              {/* large ambient purple glow behind the word */}
-              <span
-                aria-hidden
-                className="pointer-events-none absolute left-1/2 top-1/2 h-[150%] w-[135%] -translate-x-1/2 -translate-y-1/2 select-none rounded-full bg-accent/30 blur-[55px]"
-              />
-              {/* blurred purple twin hugging the letters */}
-              <span aria-hidden className="pointer-events-none absolute inset-0 select-none text-accent opacity-80 blur-[14px]">
-                Yalda
-              </span>
-              <span
-                className="relative text-ink"
-                style={{
-                  textShadow:
-                    '0 0 18px rgba(196,160,255,0.65), 0 0 44px rgba(168,85,247,0.55), 0 0 90px rgba(139,92,246,0.35)',
-                }}
-              >
-                Yalda
-              </span>
-            </span>
+            Yalda
           </motion.h1>
 
           <motion.h2 variants={item} className="mt-4 text-lg font-semibold sm:text-xl">
@@ -112,7 +93,7 @@ export default function Home() {
           </motion.p>
 
           <motion.div variants={item} className="mt-7 flex flex-wrap gap-3">
-            <motion.button onClick={() => scrollTo('about')} whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} className="btn btn-primary">
+            <motion.button onClick={() => scrollTo('work')} whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} className="btn btn-primary">
               {t.hero.aboutBtn} <ArrowRight size={16} />
             </motion.button>
             <motion.button onClick={() => scrollTo('contact')} whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} className="btn btn-ghost">

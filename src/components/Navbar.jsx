@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import { useLang } from '../i18n.jsx'
 
-const IDS = ['home', 'about', 'skills', 'work', 'education', 'learning', 'contact']
+const IDS = ['home', 'skills', 'work', 'education', 'learning', 'about', 'contact']
 
 function Logo() {
   return (
